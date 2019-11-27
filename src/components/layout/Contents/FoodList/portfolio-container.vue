@@ -40,7 +40,7 @@
 
 <script>
 import vPortfolioItem from "./portfolio-item";
-import axios from "../../js/http-commons";
+import axios from "../../../../js/http-commons";
 export default {
   data() {
     return {

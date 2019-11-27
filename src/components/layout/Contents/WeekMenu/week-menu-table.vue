@@ -8,6 +8,7 @@
         v-for="(menuItem, index) in menuArr"
         :header="menuItem.menuDateTitle"
         :key="index"
+        @click="getMenuList(menuItem.menuList)"
       >
         <b-card-text
           v-for="(item, innerIdx) in menuItem.menuList"
@@ -73,6 +74,9 @@ export default {
           });
           console.log(this.menuArr);
         });
+    },
+    getMenuList(menuList) {
+      this.$store.state.menuList = menuList;
     },
     dateFormatParse(date) {
       let dayArr = ["일", "월", "화", "수", "목", "금", "토"];

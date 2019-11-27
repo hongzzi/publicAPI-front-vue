@@ -10,7 +10,8 @@ const store = new Vuex.Store({
     auth_flag: false,
     loading: false,
     error: null,
-    checkout: false
+    checkout: false,
+    menuList: []
   },
   mutations: {
     [Constant.AUTH_TOKEN](state, payload) {

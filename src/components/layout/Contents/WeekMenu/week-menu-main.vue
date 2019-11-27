@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import menuTable from "./weekly-menu-table";
-import menuList from "./weekly-menu-list";
+import menuTable from "./week-menu-table";
+import menuList from "./week-menu-list";
 export default {
   components: {
     menuTable,

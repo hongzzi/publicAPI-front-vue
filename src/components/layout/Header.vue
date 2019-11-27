@@ -1,7 +1,7 @@
 <template>
   <div class="_header container">
     <div class="float-left">
-      <img id="img-200" src="../../assets/logo.png" alt />
+      <img id="img-200" src="../../assets/logo.png" alt @click="goMain" />
     </div>
     <div>
       <b-navbar-nav>
@@ -25,9 +25,10 @@
     <div>
       <b-nav align="end">
         <a class="navbar-brand" href="#">SAFE FOOD !</a>
-        <b-nav-item>푸드검색</b-nav-item>
+        <b-nav-item @click="goFoodList">푸드검색</b-nav-item>
         <!-- <b-nav-item><img id="img-200" src="../../assets/logo.png" alt=""></b-nav-item> -->
-        <b-nav-item>공지사항</b-nav-item>
+        <b-nav-item @click="goNotice">공지사항</b-nav-item>
+        <b-nav-item @click="goWeekMenu">주간메뉴</b-nav-item>
       </b-nav>
     </div>
     <!-- <div>
@@ -37,7 +38,6 @@
 </template>
 
 <script>
-// import Constant from "../../vuex/constant";
 import router from "../../router/router";
 
 export default {
@@ -72,6 +72,18 @@ export default {
       alert("로그아웃 되었습니다!");
       this.$router.push("/");
       this.$store.state.auth_flag = false;
+    },
+    goMain() {
+      this.$router.push("/");
+    },
+    goFoodList() {
+      this.$router.push({ name: "foodList" });
+    },
+    goNotice() {
+      this.$router.push({ name: "noticeList" });
+    },
+    goWeekMenu() {
+      this.$router.push({ name: "weekMenu" });
     }
   }
 };

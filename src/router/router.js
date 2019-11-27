@@ -7,6 +7,8 @@ import MyPageRemove from '../components/layout/Contents/MyPage/MyPageRemove';
 import MyPageHistory2 from '../components/layout/Contents/MyPage/MyPageHistory2';
 import vNoticeBoardList from '../components/layout/Contents/Notice/notice-board-list';
 import vNoticeBoardDetail from '../components/layout/Contents/Notice/notice-board-detail';
+import vFoodList from '../components/layout/Contents/FoodList/portfolio-container';
+import vWeekMenu from '../components/layout/Contents/WeekMenu/week-menu-main';
 
 const router = new VueRouter({
   routes: [
@@ -39,6 +41,11 @@ const router = new VueRouter({
       ]
     },
     {
+      name: 'foodList',
+      path: '/food/list',
+      component: vFoodList
+    },
+    {
       name: 'noticeList',
       path: '/notice/list',
       component: vNoticeBoardList
@@ -50,6 +57,11 @@ const router = new VueRouter({
       props: route => {
         return { board: route.params.board };
       }
+    },
+    {
+      name: 'weekMenu',
+      path: '/menu/list',
+      component: vWeekMenu
     }
   ]
 });

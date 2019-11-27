@@ -59,12 +59,8 @@
 </template>
 
 <script>
-import { GChart } from "vue-google-charts";
-import axios from "../../js/http-commons";
+import axios from "../../../../js/http-commons";
 export default {
-  components: {
-    GChart
-  },
   props: ["food"],
   data() {
     return {
@@ -81,7 +77,7 @@ export default {
   },
   methods: {
     getImgUrl(foodImg) {
-      return require("../../assets/" + foodImg);
+      return require("../../../../assets/" + foodImg);
     },
     showModal() {
       this.$refs["modal-lg"].show();
