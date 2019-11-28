@@ -135,7 +135,6 @@
 </template>
 
 <script>
-import Constant from "../../vuex/constant";
 import router from "../../router/router";
 import Axios from "../../js/http-commons";
 
@@ -162,7 +161,7 @@ export default {
       } else if (!this.password) {
         alert("비밀번호를 입력해주세요!");
       } else {
-        Axios.post("/api/auth/signin", {
+        Axios.post("/user/auth/signin", {
           email: this.email,
           passWord: this.password
         })
@@ -179,28 +178,19 @@ export default {
               alert("로그인을 성공했습니다!");
               this.$store.state.auth_flag = true;
               window.location.reload();
+            } else {
+              alert("아이디 혹은 비밀번호가 틀렸습니다. 다시시도해주세요");
+              this.email = "";
+              this.password = "";
             }
           })
           .catch(e => {
             console.log(e);
+            alert("아이디 혹은 비밀번호가 틀렸습니다. 다시시도해주세요");
+            this.email = "";
+            this.password = "";
           });
       }
-      // this.$store
-      //   .dispatch(Constant.LOG_IN, {
-      //     email: this.email,
-      //     password: this.password
-      //   })
-      //   .then(() => {
-      //     if (this.$store.checkout) {
-      //       alert(
-      //         sessionStorage.getItem("login_user").email + "님 반갑습니다."
-      //       );
-      //       this.$refs["login-regist-modal"].hide();
-      //       this.$store.checkout = false;
-      //     } else {
-      //       alert("로그인을 실패했습니다. 다시 시도해주세요.");
-      //     }
-      //   });
     },
     regist() {
       let allergyStr = "";
@@ -208,12 +198,20 @@ export default {
         allergyStr += element + (this.dump.length - 1 == index ? "" : ",");
       });
       this.user.allergy = allergyStr;
-      this.$store.dispatch(Constant.REGIST, { user: this.user });
-      if (this.$store.checkout) {
-        this.$refs["login-regist-modal"].hide();
-      } else {
-        alert("회원가입을 실패했습니다. 다시 시도해주세요.");
-      }
+      Axios.post("/user/auth/signup", {
+        email: this.user.email,
+        passWord: this.user.password,
+        name: this.user.name,
+        allergy: this.user.allergy
+      })
+        .then(() => {
+          alert("회원가입을 성공했습니다.");
+          window.location.reload();
+        })
+        .catch(e => {
+          console.log(e);
+          alert("잘못된 정보입니다.");
+        });
     }
   }
 };

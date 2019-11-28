@@ -41,7 +41,7 @@ const store = new Vuex.Store({
       store.commit(Constant.LOADING, {
         loading: true
       });
-      Axios.post('/auth/signin', {
+      Axios.post('/user/auth/signin', {
         email: payload.email,
         passWord: payload.password
       })
@@ -71,13 +71,15 @@ const store = new Vuex.Store({
       store.commit(Constant.LOADING, {
         loading: true
       });
-      Axios.post('/auth/signup', {
+      Axios.post('/user/auth/signup', {
         email: payload.user.email,
         passWord: payload.user.password,
         name: payload.user.name,
         allergy: payload.user.allergy
       })
-        .then(() => {})
+        .then(() => {
+          store.commit(Constant.CHECKOUT_SUCCESS);
+        })
         .catch(e => {
           // console.log(e);
           store.commit(Constant.ERROR, {
