@@ -16,6 +16,11 @@ export default {
           sortable: true
         },
         {
+          key: "calory",
+          label: "칼로리",
+          sortable: true
+        },
+        {
           key: "carbo",
           label: "탄수화물",
           sortable: true

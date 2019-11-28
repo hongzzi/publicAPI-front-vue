@@ -5,6 +5,7 @@
       <b-card
         ref="menu-card-container"
         style="margin-left:5px; margin-right:5px;"
+        footer-tag="footer"
         v-for="(menuItem, index) in menuArr"
         :header="menuItem.menuDateTitle"
         :key="index"
@@ -15,6 +16,13 @@
           :key="innerIdx"
           style="margin-bottom:5px;"
         >{{item.menuName}}</b-card-text>
+        <template v-slot:footer>
+          <div>
+            총 칼로리:
+            <span style="font-weight:bold;">{{menuItem.totalKcal}}</span>
+            Kcal
+          </div>
+        </template>
       </b-card>
     </b-card-group>
   </div>
@@ -44,11 +52,11 @@ export default {
         let arrDate = new Date(
           new Date(wkStart).setDate(wkStart.getDate() + i)
         );
-        console.log(typeof this.menuArr);
         this.menuArr.push({
           menuDate: arrDate,
           menuDateTitle: this.dateFormatParse(arrDate),
-          menuList: []
+          menuList: [],
+          totalKcal: 0
         });
       }
     },
@@ -69,10 +77,10 @@ export default {
             this.menuArr.forEach(menuItem => {
               if (menuItem.menuDateTitle.includes(item.menuDate)) {
                 menuItem.menuList.push(item);
+                menuItem.totalKcal += Number(item.calory);
               }
             });
           });
-          console.log(this.menuArr);
         });
     },
     getMenuList(menuList) {
@@ -99,7 +107,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .card-deck {
   margin-bottom: 20px;
 }

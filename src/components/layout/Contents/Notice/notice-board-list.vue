@@ -242,7 +242,6 @@ export default {
         console.log("err for valid");
         return;
       }
-      console.log(this.writeForm);
       axios
         .post("/board/notice/insert", {
           title: this.writeForm.title,
