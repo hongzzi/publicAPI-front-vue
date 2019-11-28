@@ -12,7 +12,7 @@
       </div>
     </div>
 
-    <b-modal ref="modal-lg" size="xl" title="제품 상세보기" button-size="sm" ok-only no-stacking>
+    <b-modal ref="modal-lg" size="xl" button-size="sm" ok-only no-stacking>
       <div class="row">
         <div class="col-md-5">
           <img class="img-fluid" :src="getImgUrl(food.img)" alt />
@@ -37,15 +37,36 @@
               </b-tr>
             </b-tbody>
           </b-table-simple>
-          <hr>
+          <hr />
         </div>
       </div>
+      <hr />
       <b-row>
-        <b-col cols=3 class="text-center"></b-col>
-        <b-col cols=2><label for="range-1">섭취량</label></b-col>
-        <b-col cols=3><b-form-input id="range-1" v-model="value" type="range" min="0" max="10"></b-form-input>Value: {{ value }}</b-col>
-        <b-col cols=1><b-button  @click="addHistory">섭취</b-button></b-col>
+        <b-col cols="3" class="text-center"></b-col>
+        <b-col cols="2">
+          <label for="range-1">섭취량</label>
+        </b-col>
+        <b-col cols="3">
+          <b-form-input id="range-1" v-model="value" type="range" min="0" max="10"></b-form-input>
+          Value: {{ value }}
+        </b-col>
+        <b-col cols="1">
+          <b-button @click="addHistory">섭취</b-button>
+        </b-col>
       </b-row>
+      <hr />
+      <b-row>
+        <b-col cols="6" style="justify-content: end;">
+          <apexchart type="donut" width="100%" :options="chartOptions" :series="series" />
+        </b-col>
+        <b-col cols="6" style="padding-left: 5%; padding-right:10%">
+          <b-row class="row-table" v-for="(value, index) in series" :key="index">
+            <b-col class="row-table-header" cols="4">{{chartOptions.labels[index]}}</b-col>
+            <b-col class="row-table-data" cols="8">{{value}} &nbsp;{{unitStr[index]}}</b-col>
+          </b-row>
+        </b-col>
+      </b-row>
+      <hr />
       <h3 class="my-4">Related Projects</h3>
       <!-- relative items -->
       <div class="row">
@@ -71,17 +92,41 @@ export default {
   data() {
     return {
       relativeFoods: [],
-      value : 0,
-      intake : {}
+      value: 0,
+      intake: {},
+
+      unitStr: ["g", "g", "g", "mg", "mg", "mg", "mg", "mg"],
+      series: [0, 0, 0, 0, 0, 0, 0, 0],
+      chartOptions: {
+        labels: [
+          "탄수화물",
+          "단백질",
+          "지방",
+          "당류",
+          "나트륨",
+          "콜레스테롤",
+          "포화지방산",
+          "트랜스지방"
+        ],
+        responsive: [
+          {
+            breakpoint: 480,
+            options: {
+              chart: {
+                width: 200
+              },
+              legend: {
+                position: "bottom"
+              }
+            }
+          }
+        ]
+      }
     };
   },
   mounted() {
     this.getRelativeFoods();
-  },
-  watch: {
-    relativeFoods() {
-      return this.relativeFoods;
-    }
+    this.getSeries();
   },
   methods: {
     getImgUrl(foodImg) {
@@ -89,6 +134,18 @@ export default {
     },
     showModal() {
       this.$refs["modal-lg"].show();
+    },
+    getSeries() {
+      this.series = [
+        this.food.carbo,
+        this.food.protein,
+        this.food.fat,
+        this.food.sugar,
+        this.food.natrium,
+        this.food.chole,
+        this.food.fattyacid,
+        this.food.transfat
+      ];
     },
     getRelativeFoods() {
       axios
@@ -102,15 +159,15 @@ export default {
         });
     },
     addHistory() {
-       axios
+      axios
         .post("/history/intake", {
-            foodId : this.food.code,
-            email : JSON.parse(sessionStorage.getItem("login_user")).email,
-            quantity : this.value,
-            intakeDate : new Date()
+          foodId: this.food.code,
+          email: JSON.parse(sessionStorage.getItem("login_user")).email,
+          quantity: this.value,
+          intakeDate: new Date()
         })
         .then(() => {
-          alert(this.food.name+"을 "+this.value+"만큼 섭취하셨습니다");
+          alert(this.food.name + "을 " + this.value + "만큼 섭취하셨습니다");
         });
     }
   }
@@ -129,5 +186,21 @@ export default {
 .relate-food-name {
   text-align: center;
   font-weight: bold;
+}
+
+.row-table {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-bottom-width: 1px;
+  border-bottom-color: #efefef;
+  border-bottom-style: solid;
+}
+.row-table-header {
+  text-align: end;
+  padding-right: 20px;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+.row-table-data {
 }
 </style>
