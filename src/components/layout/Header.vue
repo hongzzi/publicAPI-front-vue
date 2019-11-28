@@ -23,13 +23,12 @@
       </b-navbar-nav>
     </div>
     <div>
-      <b-nav align="end">
-        <a class="navbar-brand" href="#">SAFE FOOD !</a>
-        <b-nav-item @click="goFoodList">푸드검색</b-nav-item>
+      <b-nav variant="info" class="border-nav" align="end">
+        <b-nav-item class="nav-item-link" @click="goFoodList">푸드검색</b-nav-item>
         <!-- <b-nav-item><img id="img-200" src="../../assets/logo.png" alt=""></b-nav-item> -->
-        <b-nav-item @click="goNotice">공지사항</b-nav-item>
-        <b-nav-item @click="goWeekMenu">주간메뉴</b-nav-item>
-        <b-nav-item @click="goQnA">Q&amp;A</b-nav-item>
+        <b-nav-item class="nav-item-link" @click="goNotice">공지사항</b-nav-item>
+        <b-nav-item class="nav-item-link" @click="goWeekMenu">주간메뉴</b-nav-item>
+        <b-nav-item class="nav-item-link" @click="goQnA">Q&amp;A</b-nav-item>
       </b-nav>
     </div>
     <!-- <div>
@@ -105,5 +104,14 @@ export default {
 }
 #img-200 {
   width: 200px;
+}
+
+</style>
+<style scoped>
+a{
+  color: seagreen;
+}
+.border-nav{ 
+  padding : 20px;
 }
 </style>

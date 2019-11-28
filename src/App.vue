@@ -29,4 +29,12 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap");
+
+* {
+  font-family: "Nanum Gothic", sans-serif;
+}
+.content-header-tt {
+  padding : 20px;
+}
 </style>

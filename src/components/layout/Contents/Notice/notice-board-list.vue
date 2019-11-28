@@ -1,6 +1,8 @@
 <template>
   <b-container>
-    <h3>공지사항</h3>
+    <div class="content-header-tt">
+      <h3>공지사항</h3>
+    </div>
     <b-table
       striped
       hover
@@ -280,5 +282,9 @@ export default {
 #write-contents {
   padding-left: 20px;
   padding-right: 20px;
+}
+.content-header-tt {
+  padding: 20px;
+  text-emphasis: true;
 }
 </style>

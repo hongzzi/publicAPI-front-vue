@@ -22,7 +22,9 @@
     </b-carousel>
 
     <div class="mt-4">
-      <h4>안전한 먹거리를 위한 우리들의 노력</h4>
+      <div class="tpp">
+        <h4>안전한 먹거리를 위한 우리들의 노력</h4>
+      </div>
       <b-card
         :img-src="getImgUrl(cardData[0].imgSrc)"
         img-width="40%"
@@ -35,7 +37,7 @@
           <h2 class="card-title">{{cardData[0].title}}</h2>
           <p class="card-text">{{cardData[0].content}}</p>
         </b-card-text>
-        <a href="#" class="btn btn-primary">Read More &rarr;</a>
+        <b-button variant="outline-success" class="top-nav-button">음식검색 바로가기</b-button>
       </b-card>
 
       <b-card
@@ -50,7 +52,7 @@
           <h2 class="card-title">{{cardData[1].title}}</h2>
           <p class="card-text">{{cardData[1].content}}</p>
         </b-card-text>
-        <a href="#" class="btn btn-primary">Read More &rarr;</a>
+        <b-button variant="outline-success" class="top-nav-button">나의 섭취정보 바로가기</b-button>
       </b-card>
 
       <b-card
@@ -65,7 +67,7 @@
           <h2 class="card-title">{{cardData[2].title}}</h2>
           <p class="card-text">{{cardData[2].content}}</p>
         </b-card-text>
-        <a href="#" class="btn btn-primary">Read More &rarr;</a>
+        <b-button variant="outline-success" class="top-nav-button">오늘의 식단 바로가기</b-button>
       </b-card>
     </div>
   </b-container>
@@ -79,18 +81,18 @@ export default {
       sliding: null,
       carouselData: [
         {
-          caption: "첫번째 화면",
-          text: "대충 첫번째 화면",
+          caption: "SAFEFOOD",
+          text: "Vegetable",
           imgSrc: "header1.jpg"
         },
         {
-          caption: "두번째 화면",
-          text: "대충 두번째 화면",
+          caption: "SAFEFOOD",
+          text: "Eat",
           imgSrc: "header2.jpg"
         },
         {
-          caption: "세번째 화면",
-          text: "대충 세번째 화면",
+          caption: "SAFEFOOD",
+          text: "Avocado",
           imgSrc: "header3.jpg"
         }
       ],
@@ -99,19 +101,19 @@ export default {
           title: "음식의 정보를 정확하게!",
           content:
             "평소 우리가 자주먹던 음식들, 과연 어떤 성분들로 이루어져 있을까요?",
-          imgSrc: "main_card1.jpg"
+          imgSrc: "main_card3.jpg"
         },
         {
           title: "누구보다 건강하게 먹기!",
           content:
             "이제 매 끼니도 신경써서 먹기! 내가 먹은 내용들을 한눈에 알아볼 수 있어요.",
-          imgSrc: "main_card2.jpg"
+          imgSrc: "main_card1.jpg"
         },
         {
           title: "오늘의 메뉴는?",
           content:
             "오늘의 점심메뉴, 저녁메뉴는 과연 몇칼로리이고, 영양 성분은 골고루일까요?",
-          imgSrc: "main_card3.jpg"
+          imgSrc: "main_card2.jpg"
         }
       ]
     };
@@ -125,4 +127,8 @@ export default {
 </script>
 
 <style scoped>
+.tpp {
+  padding: 20px;
+  padding-top: 50px;
+}
 </style>

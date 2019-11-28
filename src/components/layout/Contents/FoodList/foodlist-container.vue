@@ -1,9 +1,10 @@
 <template>
   <div class="container">
-    <h1 class="mt-4 mb-3">
-      SafeFood
-      <small>음식 조회</small>
-    </h1>
+    <div class="content-header-tt">
+      <h3>
+        음식 조회
+      </h3>
+    </div>
 
     <b-input-group class="breadcrumb">
       <b-input-group-prepend>
@@ -127,5 +128,9 @@ export default {
   padding-right: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+.content-header-tt {
+  padding : 20px;
+  text-emphasis: true; 
 }
 </style>

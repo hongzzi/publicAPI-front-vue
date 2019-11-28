@@ -1,6 +1,8 @@
 <template>
   <div id="menu-container">
-    <h2>식단표</h2>
+    <div class="content-header-tt">
+      <h3>식단표</h3>
+    </div>
     <b-card-group deck class="card-deck">
       <b-card
         ref="menu-card-container"
@@ -113,5 +115,9 @@ export default {
 }
 #menu-container {
   padding-top: 15px;
+}
+.content-header-tt {
+  padding: 20px;
+  text-emphasis: true;
 }
 </style>
