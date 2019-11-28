@@ -37,9 +37,15 @@
               </b-tr>
             </b-tbody>
           </b-table-simple>
+          <hr>
         </div>
       </div>
-
+      <b-row>
+        <b-col cols=3 class="text-center"></b-col>
+        <b-col cols=2><label for="range-1">섭취량</label></b-col>
+        <b-col cols=3><b-form-input id="range-1" v-model="value" type="range" min="0" max="10"></b-form-input>Value: {{ value }}</b-col>
+        <b-col cols=1><b-button  @click="addHistory">섭취</b-button></b-col>
+      </b-row>
       <h3 class="my-4">Related Projects</h3>
       <!-- relative items -->
       <div class="row">
@@ -64,7 +70,9 @@ export default {
   props: ["food"],
   data() {
     return {
-      relativeFoods: []
+      relativeFoods: [],
+      value : 0,
+      intake : {}
     };
   },
   mounted() {
@@ -91,6 +99,18 @@ export default {
         })
         .then(res => {
           this.relativeFoods = res.data.data;
+        });
+    },
+    addHistory() {
+       axios
+        .post("/history/intake", {
+            foodId : this.food.code,
+            email : JSON.parse(sessionStorage.getItem("login_user")).email,
+            quantity : this.value,
+            intakeDate : new Date()
+        })
+        .then(() => {
+          alert(this.food.name+"을 "+this.value+"만큼 섭취하셨습니다");
         });
     }
   }

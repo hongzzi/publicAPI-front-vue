@@ -23,7 +23,7 @@ export default {
   methods: {
     remove() {
       axios
-        .delete("http://localhost:8197/api/user/remove", {
+        .delete("http://localhost:8197/user/remove", {
           params: {
             email: this.user.email
           },

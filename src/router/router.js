@@ -1,10 +1,9 @@
 import VueRouter from 'vue-router';
 import Main from '../components/layout/Contents/Main/Main-container';
 import MyPage from '../components/layout/Contents/MyPage/MyPage';
-import MyPageHistory from '../components/layout/Contents/MyPage/MyPageHistory';
 import MyPageDetail from '../components/layout/Contents/MyPage/MyPageDetail';
 import MyPageRemove from '../components/layout/Contents/MyPage/MyPageRemove';
-import MyPageHistory2 from '../components/layout/Contents/MyPage/MyPageHistory2';
+import MyPageHistory from '../components/layout/Contents/MyPage/MyPageHistory';
 import vNoticeBoardList from '../components/layout/Contents/Notice/notice-board-list';
 import vNoticeBoardDetail from '../components/layout/Contents/Notice/notice-board-detail';
 import vFoodList from '../components/layout/Contents/FoodList/portfolio-container';
@@ -25,10 +24,6 @@ const router = new VueRouter({
         {
           path: 'history',
           component: MyPageHistory
-        },
-        {
-          path: 'history2',
-          component: MyPageHistory2
         },
         {
           path: 'detail',

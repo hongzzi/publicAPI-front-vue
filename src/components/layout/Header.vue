@@ -7,7 +7,7 @@
       <b-navbar-nav>
         <b-button class="ml-auto" align="end" type="dark" variant="white">
           <b-nav-item v-if="auth">
-            <router-link to="/mypage">
+            <router-link to="/mypage/history">
               <b-button variant="outline-success" class="top-nav-button">MyPage</b-button>
             </router-link>
             <b-button variant="outline-success" class="top-nav-button" @click="logout">로그아웃</b-button>
@@ -89,7 +89,7 @@ export default {
 };
 </script>
 
-<style scope>
+<style>
 .site-logo {
   width: 200px;
 }
