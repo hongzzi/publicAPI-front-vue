@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import vPortfolioItem from "./portfolio-item";
+import vPortfolioItem from "./foodlist-item";
 import axios from "../../../../js/http-commons";
 export default {
   data() {

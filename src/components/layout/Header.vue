@@ -29,6 +29,7 @@
         <!-- <b-nav-item><img id="img-200" src="../../assets/logo.png" alt=""></b-nav-item> -->
         <b-nav-item @click="goNotice">공지사항</b-nav-item>
         <b-nav-item @click="goWeekMenu">주간메뉴</b-nav-item>
+        <b-nav-item @click="goQnA">Q&amp;A</b-nav-item>
       </b-nav>
     </div>
     <!-- <div>
@@ -84,6 +85,9 @@ export default {
     },
     goWeekMenu() {
       this.$router.push({ name: "weekMenu" });
+    },
+    goQnA() {
+      this.$router.push({ name: "qna" });
     }
   }
 };

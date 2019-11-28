@@ -6,8 +6,9 @@ import MyPageRemove from '../components/layout/Contents/MyPage/MyPageRemove';
 import MyPageHistory from '../components/layout/Contents/MyPage/MyPageHistory';
 import vNoticeBoardList from '../components/layout/Contents/Notice/notice-board-list';
 import vNoticeBoardDetail from '../components/layout/Contents/Notice/notice-board-detail';
-import vFoodList from '../components/layout/Contents/FoodList/portfolio-container';
+import vFoodList from '../components/layout/Contents/FoodList/foodlist-container';
 import vWeekMenu from '../components/layout/Contents/WeekMenu/week-menu-main';
+import vQnA from '../components/layout/Contents/QnA/qna';
 
 const router = new VueRouter({
   routes: [
@@ -57,6 +58,11 @@ const router = new VueRouter({
       name: 'weekMenu',
       path: '/menu/list',
       component: vWeekMenu
+    },
+    {
+      name: 'qna',
+      path: '/qna/list',
+      component: vQnA
     }
   ]
 });
