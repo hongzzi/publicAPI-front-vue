@@ -14,7 +14,7 @@
     "bootstrap-vue": "^2.1.0",
     "chart.js": "^2.9.3",
     "core-js": "^3.3.2",
-    "jose": "^1.12.1",
+    "jose": "^1.28.1",
     "jquery": "^3.4.1",
     "vue": "^2.6.10",
     "vue-apexcharts": "^1.5.1",
